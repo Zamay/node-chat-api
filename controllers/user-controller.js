@@ -21,14 +21,19 @@ const addUser = (req, res) => {
 }
 
 const editUser = (req, res) => {
-
+  const { name } = req.body;
+  const { id } = req.params;
+  User
+    .findByIdAndUpdate(id, { name })
+    .then(() => res.redirect(`/`))
+    .catch((error) => handleError(res, error));
 }
 
 const deleteUser = (req, res) => {
   const {id} = req.params;
   User
     .findByIdAndDelete(id)
-    .then((post) => res.status(200).json(id))
+    .then(() => res.status(200).json(id))
     .catch((error) => handleError(res, error));
 }
 

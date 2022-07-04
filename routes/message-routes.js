@@ -3,9 +3,9 @@ const {getMessages, addMessage, editMessage, deleteMessage} = require('../contro
 
 const router = express.Router();
 
-router.get('/posts', getMessages);
-router.post('/add-post', addMessage);
-router.put('/edit/:id', editMessage);
-router.delete('/posts/:id', deleteMessage);
+router.get('/', getMessages);
+router.post('/', addMessage);
+router.put('/:id', editMessage);
+router.delete('/:id', deleteMessage);
 
 module.exports = router;
