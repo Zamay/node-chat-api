@@ -1,0 +1,29 @@
+{
+  "name": "node-chat-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/zamay-projects/node-chat-api.git"
+  },
+  "bugs": {
+    "url": "https://bitbucket.org/zamay-projects/node-chat-api/issues"
+  },
+  "homepage": "https://bitbucket.org/zamay-projects/node-chat-api#readme",
+  "description": ""
+}
