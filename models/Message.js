@@ -1,15 +1,25 @@
-const {Schema, model} = require('mongoose')
+import mongoose from 'mongoose';
 
-// userId: string;
-// avatar: string;
-// user: string;
-// text: string;
-// createdAt: string;
-// editedAt?: string;
-// isLiked?: boolean;
+const MessageSchema = new mongoose.Schema(
+  {
+    text: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    isLike: {
+      type: Boolean,
+      default: false,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
 
-const Message = new Schema({
-  text: {type: String, required: true},
-}, { timestamps: true })
-
-module.exports = model('Message', Message)
+export default mongoose.model('Post', MessageSchema);
