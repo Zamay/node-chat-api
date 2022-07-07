@@ -3,7 +3,15 @@ import MessageModel from '../models/Message.js';
 export const getAll = async (req, res) => {
   try {
     const messages = await MessageModel.find().populate('user').exec();
-    res.json(messages);
+
+    const messagesData = messages.map(message => {
+      const { user } = message._doc;
+      const { passwordHash, createdAt, updatedAt, __v, ...userData } = user._doc;
+      message._doc.user = userData
+      return message;
+    });
+
+    res.json(messagesData);
   } catch (err) {
     console.log(err);
     res.status(500).json({
@@ -90,7 +98,11 @@ export const create = async (req, res) => {
       user: req.userId,
     });
 
-    const message = await doc.save();
+    const message = await (await doc.save()).populate('user');
+
+    const { user } = message._doc;
+    const { passwordHash, createdAt, updatedAt, __v, ...userData } = user._doc;
+    message._doc.user = userData
 
     res.json(message);
   } catch (err) {

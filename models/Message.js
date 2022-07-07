@@ -5,7 +5,6 @@ const MessageSchema = new mongoose.Schema(
     text: {
       type: String,
       required: true,
-      unique: true,
     },
     isLike: {
       type: Boolean,

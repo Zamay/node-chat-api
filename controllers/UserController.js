@@ -37,7 +37,7 @@ export const register = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Не удалось зарегистрироваться',
+      message: 'Не удалось зарегистрироваться!',
     });
   }
 };
@@ -79,7 +79,7 @@ export const login = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Не удалось авторизоваться',
+      message: 'Не удалось авторизоваться!!!',
     });
   }
 };
@@ -116,7 +116,7 @@ export const getAll = async (req, res) => {
     }
 
     const userData = users.map(user => {
-      const { passwordHash, ...userData } = user._doc;
+      const { passwordHash, createdAt, updatedAt, __v, ...userData } = user._doc;
       return userData;
     });
 
