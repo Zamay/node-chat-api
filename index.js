@@ -34,6 +34,6 @@ app.patch(
   MessageController.update,
 );
 
-app.listen(3002, (error) => {
-  error ? console.log(error) : console.log(`listening port 3002`);
+app.listen(process.env.PORT, (error) => {
+  error ? console.log(error) : console.log(`listening port ${process.env.PORT}`);
 });
