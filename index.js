@@ -1,13 +1,14 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import 'dotenv/config';
 
 import { loginValidation, registerValidation, messageCreateValidation } from './validations.js';
 import { UserController, MessageController } from './controllers/index.js';
 import { checkAuth, handleValidationErrors } from './utils/index.js';
 
 mongoose
-  .connect('mongodb+srv://root:root@cluster0.lb5t2d5.mongodb.net/chat?retryWrites=true&w=majority')
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log('Connected to DB'))
   .catch((error) => console.log(error));
 

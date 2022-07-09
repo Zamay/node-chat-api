@@ -2,12 +2,13 @@ import MessageModel from '../models/Message.js';
 
 export const getAll = async (req, res) => {
   try {
+    //TODO: якщо юзер null, то помилка. Виправити
     const messages = await MessageModel.find().populate('user').exec();
 
     const messagesData = messages.map(message => {
       const { user } = message._doc;
       const { passwordHash, createdAt, updatedAt, __v, ...userData } = user._doc;
-      message._doc.user = userData
+      message._doc.user = userData;
       return message;
     });
 
@@ -15,7 +16,7 @@ export const getAll = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Не удалось получить сообщения',
+      message: 'Не вдалося отримати повідомлення',
     });
   }
 };
@@ -26,7 +27,7 @@ export const toggleIsLike = async (req, res) => {
 
     if (!message) {
       return res.status(404).json({
-        message: 'Cообщение не найдено',
+        message: 'Повідомлення не знайдено',
       });
     }
 
@@ -66,13 +67,13 @@ export const remove = async (req, res) => {
         if (err) {
           console.log(err);
           return res.status(500).json({
-            message: 'Не удалось удалить сообщение',
+            message: 'Неможливо видалити повідомлення',
           });
         }
 
         if (!doc) {
           return res.status(404).json({
-            message: 'Сообщение не найдено',
+            message: 'Повідомлення не знайдено',
           });
         }
 
@@ -84,7 +85,7 @@ export const remove = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Не удалось получить сообщения',
+      message: 'Не вдалося отримати повідомлення',
     });
   }
 };
@@ -102,13 +103,13 @@ export const create = async (req, res) => {
 
     const { user } = message._doc;
     const { passwordHash, createdAt, updatedAt, __v, ...userData } = user._doc;
-    message._doc.user = userData
+    message._doc.user = userData;
 
     res.json(message);
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Не удалось создать сообщения',
+      message: 'Не вдалося створити повідомлення',
     });
   }
 };
@@ -135,7 +136,7 @@ export const update = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Не удалось обновить сообщения',
+      message: 'Не вдалося оновити повідомлення',
     });
   }
 };

@@ -37,7 +37,7 @@ export const register = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Не удалось зарегистрироваться!',
+      message: 'Неможливо зареєструватися!',
     });
   }
 };
@@ -48,7 +48,7 @@ export const login = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        message: 'Пользователь не найден',
+        message: 'Користувач не знайдений',
       });
     }
 
@@ -56,7 +56,7 @@ export const login = async (req, res) => {
 
     if (!isValidPass) {
       return res.status(400).json({
-        message: 'Неверный логин или пароль',
+        message: 'Невірний логін або пароль',
       });
     }
 
@@ -79,7 +79,7 @@ export const login = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Не удалось авторизоваться!!!',
+      message: 'Не вдалося авторизуватись!',
     });
   }
 };
@@ -90,7 +90,7 @@ export const getMe = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        message: 'Пользователь не найден',
+        message: 'Користувач не знайдений',
       });
     }
 
@@ -100,7 +100,7 @@ export const getMe = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Нет доступа',
+      message: 'Немає доступу',
     });
   }
 };
@@ -111,7 +111,7 @@ export const getAll = async (req, res) => {
 
     if (!users) {
       return res.status(404).json({
-        message: 'Пользователь не найден',
+        message: 'Користувач не знайдений',
       });
     }
 
@@ -124,7 +124,7 @@ export const getAll = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Нет доступа',
+      message: 'Немає доступу',
     });
   }
 };
@@ -141,13 +141,13 @@ export const remove = async (req, res) => {
         if (err) {
           console.log(err);
           return res.status(500).json({
-            message: 'Не удалось удалить пользователя',
+            message: 'Неможливо видалити користувача',
           });
         }
 
         if (!doc) {
           return res.status(404).json({
-            message: 'Пользователь не найден',
+            message: 'Користувач не знайдений',
           });
         }
 
@@ -159,7 +159,7 @@ export const remove = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Не удалось получить сообщения',
+      message: 'Не вдалося отримати повідомлення',
     });
   }
 };

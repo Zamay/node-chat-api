@@ -1,19 +1,19 @@
 import { body } from 'express-validator';
 
 export const loginValidation = [
-  body('email', 'Неверный формат почты').isEmail(),
-  body('password', 'Пароль должен быть минимум 5 символов').isLength({ min: 5 }),
+  body('email', 'Неправильний формат пошти').isEmail(),
+  body('password', 'Пароль має бути мінімум 5 символів').isLength({ min: 5 }),
 ];
 
 export const registerValidation = [
-  body('email', 'Неверный формат почты').isEmail(),
-  body('password', 'Пароль должен быть минимум 5 символов').isLength({ min: 5 }),
-  body('fullName', 'Укажите имя').isLength({ min: 3 }),
-  body('avatarUrl', 'Неверная ссылка на аватарку').optional().isURL(),
+  body('email', 'Неправильний формат пошти').isEmail(),
+  body('password', 'Пароль має бути мінімум 5 символів').isLength({ min: 5 }),
+  body('fullName', 'Вкажіть ім\'я').isLength({ min: 3 }),
+  body('avatarUrl', 'Неправильне посилання на аватарку').optional().isURL(),
 ];
 
 export const messageCreateValidation = [
-  body('text', 'Введите текст').isLength({ min: 1 }).isString(),
-  body('isLike', 'Ошибка в isLike').optional().isBoolean(),
-  body('imageUrl', 'Неверная ссылка на изображение').optional().isString(),
+  body('text', 'Введіть текст').isLength({ min: 1 }).isString(),
+  body('isLike', 'Помилка в isLike').optional().isBoolean(),
+  body('imageUrl', 'Неправильне посилання на зображення').optional().isString(),
 ];
