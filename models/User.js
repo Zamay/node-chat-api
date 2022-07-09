@@ -5,6 +5,12 @@ const UserSchema = new mongoose.Schema({
     passwordHash: { type: String, required: true },
     fullName: { type: String, required: true },
     avatarUrl: String,
+    role: {
+      type: String,
+      default: 'USER',
+      enum: ['USER', 'ADMIN'],
+      immutable: true
+    }
   },
   {
     timestamps: true,

@@ -13,7 +13,7 @@ export const registerValidation = [
 ];
 
 export const messageCreateValidation = [
-  body('text', 'Введите текст').isLength({ min: 3 }).isString(),
+  body('text', 'Введите текст').isLength({ min: 1 }).isString(),
   body('isLike', 'Ошибка в isLike').optional().isBoolean(),
   body('imageUrl', 'Неверная ссылка на изображение').optional().isString(),
 ];

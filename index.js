@@ -19,6 +19,7 @@ app.post('/auth/login', loginValidation, handleValidationErrors, UserController.
 app.post('/auth/register', registerValidation, handleValidationErrors, UserController.register);
 app.get('/auth/me', checkAuth, UserController.getMe);
 app.get('/users', checkAuth, UserController.getAll);
+app.delete('/users/:id', checkAuth, UserController.remove);
 
 app.get('/msg', MessageController.getAll);
 app.get('/msg/:id', MessageController.toggleIsLike);

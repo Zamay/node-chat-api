@@ -128,3 +128,38 @@ export const getAll = async (req, res) => {
     });
   }
 };
+
+export const remove = async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    UserModel.findOneAndDelete(
+      {
+        _id: userId,
+      },
+      (err, doc) => {
+        if (err) {
+          console.log(err);
+          return res.status(500).json({
+            message: 'Не удалось удалить пользователя',
+          });
+        }
+
+        if (!doc) {
+          return res.status(404).json({
+            message: 'Пользователь не найден',
+          });
+        }
+
+        res.json({
+          success: true,
+        });
+      },
+    );
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: 'Не удалось получить сообщения',
+    });
+  }
+};
