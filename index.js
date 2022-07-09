@@ -1,7 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import { v4 } from 'uuid';
 import 'dotenv/config';
 
 import { loginValidation, registerValidation, messageCreateValidation } from './validations.js';
@@ -37,17 +36,4 @@ app.patch(
 
 app.listen(process.env.PORT, (error) => {
   error ? console.log(error) : console.log(`listening port ${process.env.PORT}`);
-});
-
-// vercel.com
-app.get('/api', (req, res) => {
-  const path = `/api/item/${v4()}`;
-  res.setHeader('Content-Type', 'text/html');
-  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-  res.end(`Hello! Go to item: <a href='${path}'>${path}</a>`);
-});
-
-app.get('/api/item/:slug', (req, res) => {
-  const { slug } = req.params;
-  res.end(`Item: ${slug}`);
 });
